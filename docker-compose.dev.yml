@@ -1,0 +1,32 @@
+version: '3.7'
+services:
+  dynamodb:
+    image: amazon/dynamodb-local
+    hostname: dynamodb-local
+    container_name: dynamodb-local
+    ports:
+      - 8000:8000
+  dynamodb_seed:
+    build:
+      context: .
+      dockerfile: ./scripts/Dockerfile
+    depends_on:
+      - dynamodb
+  nextjs_app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    env_file: 
+      - .env.development.local
+    volumes:
+      - ./:/usr/app
+      - /usr/app/node_modules
+      - /usr/app/.next
+      # - ~/.aws:/root/.aws
+    ports:
+      - 3000:3000
+    links:
+      - dynamodb
+    depends_on:
+      - dynamodb_seed

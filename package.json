@@ -1,0 +1,30 @@
+{
+  "name": "react-nextjs-blog-aws-dynamodb",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "docker": "docker-compose -f docker-compose.dev.yml up --build --force-recreate",
+    "docker:down": "docker-compose -f docker-compose.dev.yml down"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.33.0",
+    "@geist-ui/react": "^2.2.0",
+    "@geist-ui/react-icons": "^1.0.1",
+    "next": "11.1.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "swr": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "17.0.24",
+    "eslint": "7.32.0",
+    "eslint-config-next": "11.1.2",
+    "prettier": "^2.4.1",
+    "ts-node": "^10.2.1",
+    "typescript": "4.4.3"
+  }
+}
